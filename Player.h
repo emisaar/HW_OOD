@@ -10,12 +10,18 @@ class Player
         int player;
         int num, moves;
         Player(int player);
+        int playerNum();
         int rollDice();
 };
 
 Player::Player(int player)
 {
     this->player = player;
+}
+
+int Player::playerNum()
+{
+    return this->player;
 }
 
 int Player::rollDice()
