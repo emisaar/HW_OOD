@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class MyGame 
+class MyGame
 {
     protected:
         int diceP1, diceP2;
@@ -70,42 +70,45 @@ void MyGame::start()
                 cout << turn << " ";
                 // Player number
                 cout << p1->playerNum() << " ";
+
                 // Tile before throwing
                 cout << p1->getPos(temp1)  << " ";
+
                 // Dice number
                 diceP1 = p1->rollDice();
                 cout << diceP1 << " ";
                 // Tile symbol
                 temp1 += diceP1;
-                cout << tiles[temp1] << " ";
 
                 // Check position
                 if (temp1 >= 30)
                 {
                     cout << "\n-- GAME OVER --" << endl;
-                    p1->winner();
+                    cout << "Player 1 is the winner!!!" << endl;
                     break;
                 }
                 // New position
                 if (tiles[temp1] == 'S')
                 {
                     //temp1 -= 3;
+                    cout << tiles[temp1] << " ";
                     temp1 = p1->snake(temp1);
                     cout << temp1 << endl;
                 } else if (tiles[temp1] == 'L')
                 {
                     //temp1 += 3;
+                    cout << tiles[temp1] << " ";
                     temp1 = p1->ladder(temp1);
                     cout << temp1 << endl;
                 } else{
-                    cout << temp1 << endl;
+                    cout << tiles[temp1] << " " << temp1 << endl;
                 }
                 
             }else{
                 // Player's turn
                 cout << turn << " ";
                 // Player number
-                cout << p2->playerNum() << " ";
+                cout << "2" << " ";
                 // Tile before throwing
                 cout << p2->getPos(temp2) << " ";
                 // Dice number
@@ -113,13 +116,13 @@ void MyGame::start()
                 cout << diceP2 << " ";
                 // Tile symbol
                 temp2 += diceP2;
-                cout << tiles[temp2] << " ";
 
                 // Check position
                 if (temp2 >= 30)
                 {
                     cout << "\n-- GAME OVER --" << endl;
-                    p2->winner();
+
+                    cout << "Player 2 is the winner!!!" << endl;
                     break;
                 }
                 
@@ -127,16 +130,19 @@ void MyGame::start()
                 if (tiles[temp2] == 'S')
                 {
                     //temp2 -= 3;
+                    cout << tiles[temp2] << " ";
                     temp2 = p2->snake(temp2);
+
                     cout << temp2 << endl;
                 } else if (tiles[temp2] == 'L')
                 {
                     //temp2 += 3;
+                    cout << tiles[temp2] << " ";
                     temp2 = p2->ladder(temp2);
                 
                     cout << temp2 << endl;
                 } else{
-                    cout << temp2 << endl;
+                    cout << tiles[temp2] << " " << temp2 << endl;
                 }
                 turn += 1;
                 
