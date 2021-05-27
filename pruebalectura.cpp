@@ -3,6 +3,7 @@
 #include <fstream>
 #include <stdbool.h>
 using namespace std;
+
 void escribir();
 void lectura();
 int main()
