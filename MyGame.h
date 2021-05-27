@@ -47,10 +47,10 @@ void MyGame::start()
         }
     }
     // -------------LECTURA TXT----------------
-    char matriz[20][1];            // ABRES UNA MATRIZ
+    char matriz[14][1];            // ABRES UNA MATRIZ
     ifstream fp("inputSnake.txt"); // LE ASIGNAS A IFSTREAM LA VARIABLE FP
 
-    for (int j = 0; j < 20; j++) //NO IMPORTA EL LARGO DE LA LECTURA
+    for (int j = 0; j < 14; j++) //NO IMPORTA EL LARGO DE LA LECTURA
     {
         fp >> matriz[0][j]; // LE ASIGNAS LOS VALORES DE FP A LA MATRIZ
     }
@@ -181,8 +181,8 @@ void MyGame::start()
                 cout << "Thanks for playing!!!" << endl;
                 break;
             }
+            counterEnd += 1;
         }
-        counterEnd += 1;
     }
     if (turn >= 15)
     {
