@@ -13,22 +13,9 @@ int main()
     return 0;
 }
 
-void escribir()
-{
-    ofstream archivo;                          // LE ASIGNAS LA VALIRABLE ARCHIVO A OFSTREAM. PUEDES UTILIZAR OTRO NOMBRE QUE NO SEA ARCHIVO
-    archivo.open("escayserpye.txt", ios::out); // Opening the faile and the ios out is making a new file: TAMBIEN SI CAMBIAS EL NOMBRE TE CREA UN NUEVO TXT
-    if (archivo.fail())
-    {
-        cout << "No se pudo leer" << endl;
-        exit(1);
-    } // POR SI NO HABRE
-
-    archivo << "HI quiero mucho a ti" << 5 << " Numero" << endl; //PUEDES ESCRIBIR INTS CHARS Y STRINGS EN EL ARCHIVO
-    archivo.close();
-}
 void lectura()
 {
-    char matriz[100][100];    // ABRES UNA MATRIZ
+    char matriz[100][100];         // ABRES UNA MATRIZ
     ifstream fp("inputSnake.txt"); // LE ASIGNAS A IFSTREAM LA VARIABLE FP
 
     for (int j = 0; j < 20; j++) //NO IMPORTA EL LARGO DE LA LECTURA
@@ -57,4 +44,10 @@ void lectura()
             }
         }
     }
+
+    // for (int j = 0; j < 23; j++)
+    // {
+    //     cout << matriz[0][j] << endl;
+    // }
+    // cout << "\n";
 }
