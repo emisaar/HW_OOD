@@ -1,22 +1,22 @@
 #include <iostream>
-#include<stdlib.h>
-#include<time.h>
+#include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 
 class Player
 {
-    public:
-        int player;
-        int num, moves;
-        Player(int player);
-        int playerNum();
-        int rollDice();
+public:
+    int player;
+    int num, moves;
+    Player(int player);
+    int playerNum();
+    int rollDice();
 
-        int getPos(int);
-        int snake(int);
-        int ladder(int);
-        void winner();
+    int getPos(int);
+    int snake(int);
+    int ladder(int);
+    void winner();
 };
 
 Player::Player(int player)
@@ -33,12 +33,12 @@ int Player::rollDice()
 {
     num = 6;
     srand(time(NULL));
-    moves = rand()%num;
+    moves = rand() % num;
     if (moves == 0)
     {
         moves = 1;
     }
-    
+
     return moves;
 }
 
@@ -54,11 +54,11 @@ int Player::snake(int temp)
 
 int Player::ladder(int temp)
 {
-     return temp += 3;
+    return temp += 3;
 }
 
 void Player::winner()
 {
-    Player *p = new Player(player);
-    cout << "Player " << p->playerNum() << " is the winner!!!" << endl;
+    // Player *p = new Player(player);
+    cout << "Player " << player << " is the winner!!!" << endl;
 }
