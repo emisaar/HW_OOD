@@ -29,7 +29,7 @@ void escribir()
 void lectura()
 {
     char matriz[100][100];    // ABRES UNA MATRIZ
-    ifstream fp("inCyE.txt"); // LE ASIGNAS A IFSTREAM LA VARIABLE FP
+    ifstream fp("inputSnake.txt"); // LE ASIGNAS A IFSTREAM LA VARIABLE FP
 
     for (int j = 0; j < 20; j++) //NO IMPORTA EL LARGO DE LA LECTURA
     {
@@ -57,10 +57,4 @@ void lectura()
             }
         }
     }
-
-    // for (int j = 0; j < 23; j++)
-    // {
-    //     cout << matriz[0][j] << endl;
-    // }
-    // cout << "\n";
 }
