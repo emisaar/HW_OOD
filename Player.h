@@ -12,6 +12,11 @@ class Player
         Player(int player);
         int playerNum();
         int rollDice();
+
+        int getPos(int);
+        int snake(int);
+        int ladder(int);
+        void winner();
 };
 
 Player::Player(int player)
@@ -35,4 +40,25 @@ int Player::rollDice()
     }
     
     return moves;
+}
+
+int Player::getPos(int temp)
+{
+    return temp;
+}
+
+int Player::snake(int temp)
+{
+    return temp -= 3;
+}
+
+int Player::ladder(int temp)
+{
+     return temp += 3;
+}
+
+void Player::winner()
+{
+    Player *p = new Player(player);
+    cout << "Player " << p->playerNum() << " is the winner!!!" << endl;
 }

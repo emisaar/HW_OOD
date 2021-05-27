@@ -5,18 +5,19 @@ using namespace std;
 
 class MyGame 
 {
+    protected:
+        int diceP1, diceP2;
+        int temp1 = 1;
+        int temp2 = 1;
+        char userIn;
+        int turn = 1; 
+        int counterEnd = 1;
     public:
         void start();
 };
 
 void MyGame::start()
 {
-    int diceP1, diceP2;
-    int temp1 = 1;
-    int temp2 = 1;
-    char userIn;
-    int turn = 1; 
-    int counterEnd = 1;
     cout << "Snakes & Ladders" << endl;
     // Players
     Player *p1 = new Player(1);
@@ -70,30 +71,34 @@ void MyGame::start()
                 // Player number
                 cout << p1->playerNum() << " ";
                 // Tile before throwing
-                cout << temp1  << " ";
+                cout << p1->getPos(temp1)  << " ";
                 // Dice number
                 diceP1 = p1->rollDice();
                 cout << diceP1 << " ";
                 // Tile symbol
                 temp1 += diceP1;
+                cout << tiles[temp1] << " ";
+
                 // Check position
                 if (temp1 >= 30)
                 {
-                    cout << "-- GAME OVER --" << endl;
-                    cout << "Player 1 is the winner!!!" << endl;
+                    cout << "\n-- GAME OVER --" << endl;
+                    p1->winner();
                     break;
                 }
                 // New position
                 if (tiles[temp1] == 'S')
                 {
-                    temp1 -= 3;
-                    cout <<  tiles[temp1] << " " << temp1 << endl;
+                    //temp1 -= 3;
+                    temp1 = p1->snake(temp1);
+                    cout << temp1 << endl;
                 } else if (tiles[temp1] == 'L')
                 {
-                    temp1 += 3;
-                    cout <<  tiles[temp1] << " " << temp1 << endl;
+                    //temp1 += 3;
+                    temp1 = p1->ladder(temp1);
+                    cout << temp1 << endl;
                 } else{
-                    cout <<  tiles[temp1] << " " << temp1 << endl;
+                    cout << temp1 << endl;
                 }
                 
             }else{
@@ -102,32 +107,36 @@ void MyGame::start()
                 // Player number
                 cout << p2->playerNum() << " ";
                 // Tile before throwing
-                cout << temp2 << " ";
+                cout << p2->getPos(temp2) << " ";
                 // Dice number
                 diceP2 = p2->rollDice();
                 cout << diceP2 << " ";
                 // Tile symbol
                 temp2 += diceP2;
+                cout << tiles[temp2] << " ";
 
                 // Check position
                 if (temp2 >= 30)
                 {
-                    cout << "-- GAME OVER --" << endl;
-                    cout << "Player 2 is the winner!!!" << endl;
+                    cout << "\n-- GAME OVER --" << endl;
+                    p2->winner();
                     break;
                 }
                 
                 // New position
                 if (tiles[temp2] == 'S')
                 {
-                    temp2 -= 3;
-                    cout  << tiles[temp2] << " " << temp2 << endl;
+                    //temp2 -= 3;
+                    temp2 = p2->snake(temp2);
+                    cout << temp2 << endl;
                 } else if (tiles[temp2] == 'L')
                 {
-                    temp2 += 3;
-                    cout  << tiles[temp2] << " " << temp2 << endl;
+                    //temp2 += 3;
+                    temp2 = p2->ladder(temp2);
+                
+                    cout << temp2 << endl;
                 } else{
-                    cout  << tiles[temp2] << " " << temp2 << endl;
+                    cout << temp2 << endl;
                 }
                 turn += 1;
                 
