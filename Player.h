@@ -1,3 +1,4 @@
+// Prueba Sofi
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
@@ -9,14 +10,13 @@ class Player
 public:
     int player;
     int num, moves;
-    Player(int player);
+    Player(int);
     int playerNum();
     int rollDice();
 
     int getPos(int);
     int snake(int);
     int ladder(int);
-    void winner();
 };
 
 Player::Player(int player)
@@ -55,10 +55,4 @@ int Player::snake(int temp)
 int Player::ladder(int temp)
 {
     return temp += 3;
-}
-
-void Player::winner()
-{
-    // Player *p = new Player(player);
-    cout << "Player " << player << " is the winner!!!" << endl;
 }
