@@ -17,7 +17,7 @@ protected:
 
 public:
     void start();
-    void readFIle();
+    void readFile();
 };
 
 void MyGame::start()
@@ -51,14 +51,12 @@ void MyGame::start()
         // Prints the instruction to start the game
         cout << "Press C to continue next turn or E to end the game: ";
         cin >> userIn;
-        cout << userIn << endl;
 
         while ((userIn != 'C') && (userIn != 'E'))
         {
             // Check if the option is valid
             cout << "Invalid operation. Please press C to continue next turn or E to end the game: ";
             cin >> userIn;
-            cout << userIn << endl;
         }
 
         if (userIn == 'C')
@@ -80,14 +78,6 @@ void MyGame::start()
                 // Tile symbol
                 temp1 += diceP1;
 
-                // Check position
-                if (temp1 >= 30)
-                {
-                    // If the position is 30 or more the player win
-                    cout << "\n-- GAME OVER --" << endl;
-                    cout << "Player 1 is the winner!!!" << endl;
-                    break;
-                }
                 // New position
                 if (tiles[temp1] == 'S')
                 {
@@ -108,6 +98,14 @@ void MyGame::start()
                     // else the tile is normal
                     cout << tiles[temp1] << " " << temp1 << endl;
                 }
+                // Check position
+                if (temp1 >= 30)
+                {
+                    // If the position is 30 or more the player win
+                    cout << "\n-- GAME OVER --" << endl;
+                    cout << "Player 1 is the winner!!!" << endl;
+                    break;
+                }
             }
             else
             {
@@ -122,16 +120,6 @@ void MyGame::start()
                 cout << diceP2 << " ";
                 // Tile symbol
                 temp2 += diceP2;
-
-                // Check position
-                if (temp2 >= 30)
-                {
-                    // If the position is 30 or more the player win
-                    cout << "\n-- GAME OVER --" << endl;
-
-                    cout << "Player 2 is the winner!!!" << endl;
-                    break;
-                }
 
                 // New position
                 if (tiles[temp2] == 'S')
@@ -154,6 +142,16 @@ void MyGame::start()
                 {
                     // else the tile is normal
                     cout << tiles[temp2] << " " << temp2 << endl;
+                }
+
+                // Check position
+                if (temp2 >= 30)
+                {
+                    // If the position is 30 or more the player win
+                    cout << "\n-- GAME OVER --" << endl;
+
+                    cout << "Player 2 is the winner!!!" << endl;
+                    break;
                 }
                 turn += 1;
             }
