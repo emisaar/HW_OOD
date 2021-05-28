@@ -16,6 +16,9 @@ protected:
     int turn = 1;
     int counterEnd = 1;
     int mode; // ACTUALIZAR UML
+    // Matrix to save the characters from the txt
+    char matriz[14][1];
+    int check;
 
 public:
     void start();
@@ -52,21 +55,31 @@ void MyGame::start()
     cout << "Press 1 to play manually or 2 to play with a .txt file: ";
     cin >> mode;
 
-    // Matrix to save the characters from the txt
-    char matriz[14][1];
-    ifstream fp("inputSnake.txt"); // Reads the file
-
-    for (int j = 0; j < 14; j++)
+    if (mode == 2)
     {
-        // The data is saved in their corresponding position
-        fp >> matriz[0][j];
+        ifstream fp("inputSnake.txt"); // Reads the file
+
+        for (int j = 0; j < 14; j++)
+        {
+            // The data is saved in their corresponding position
+            fp >> matriz[0][j];
+        }
+        check = 2;
     }
 
     while (turn <= 15) // It limits to play up to 15 turns
     {
-        cout << "Press C to continue next turn or E to end the game: ";
+        if (check == 2)
+        {
+            cout << "Press C to continue next turn or E to end the game: ";
 
-        userIn = matriz[0][turn - 1];
+            userIn = matriz[0][turn - 1];
+        }
+        else
+        {
+            cout << "C o E: " << endl;
+            cin >> userIn;
+        }
 
         if (userIn == 'C')
         {
