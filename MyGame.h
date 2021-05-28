@@ -71,14 +71,20 @@ void MyGame::start()
     {
         if (check == 2)
         {
-            cout << "Press C to continue next turn or E to end the game: ";
+            cout << "Press C to continue next turn or E to end the game: \n";
 
             userIn = matriz[0][turn - 1];
         }
         else
         {
-            cout << "C o E: " << endl;
+            cout << "Press C to continue next turn or E to end the game: " << endl;
             cin >> userIn;
+            while ((userIn != 'C') && (userIn != 'E'))
+            {
+                // Check if the option is valid
+                cout << "Invalid operation. Please press C to continue next turn or E to end the game: ";
+                cin >> userIn;
+            }
         }
 
         if (userIn == 'C')

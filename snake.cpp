@@ -7,7 +7,6 @@
 
 using namespace std;
 
-int num;
 int main()
 {
     MyGame g;
