@@ -2,10 +2,12 @@
 #include <fstream>
 #include <stdbool.h>
 #include "Player.h"
+#include "Board.h"
+#include "Tiles.h"
 
 using namespace std;
 
-class MyGame
+class MyGame : public Board, public Tiles
 {
 protected:
     int diceP1, diceP2;
@@ -14,6 +16,8 @@ protected:
     char userIn;
     int turn = 1;
     int counterEnd = 1;
+    int gameMode;
+    int turns;
 
 public:
     void start();
@@ -27,26 +31,35 @@ void MyGame::start()
     Player *p1 = new Player(1);
     Player *p2 = new Player(2);
 
-    // Tiles are created
-    char tiles[30];
-    for (int i = 1; i <= 30; i++)
+    cout << "Do you want a default game mode (0) or customize it (1)?" << endl;
+    cin >> gameMode;
+    while (gameMode != 0 && gameMode != 1)
     {
-        // Fill the tiles
-        if (i == 5 || i == 17 || i == 28)
-        {
-            tiles[i] = 'S';
-        }
-        else if (i == 8 || i == 13 || i == 26)
-        {
-            tiles[i] = 'L';
-        }
-        else
-        {
-            tiles[i] = 'N';
-        }
+        cout << "Invalid option. Press 0 or 1." << endl;
+        cin >> gameMode;
     }
 
-    while (turn <= 15) // Maximum number of shifts is 15
+    if (gameMode == 0)
+    {
+        Board b1();
+        turns = 15;
+    }
+    else
+    {
+        int numT, numS, numL;
+        cout << "Enter the number of tiles: ";
+        cin >> numT;
+        cout << "Enter the number of snakes: ";
+        cin >> numS;
+        cout << "Enter the number of ladders: ";
+        cin >> numL;
+        cout << "Enter the number of turns: ";
+        cin >> turns;
+
+        Board b1(numT, numS, numL);
+    }
+
+    while (turn <= turns) // Maximum number of shifts is 15
     {
         // Prints the instruction to start the game
         cout << "Press C to continue next turn or E to end the game: ";

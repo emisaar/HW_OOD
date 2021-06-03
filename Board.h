@@ -6,19 +6,20 @@
 #include <time.h>
 
 #include "Player.h"
+#include "Tiles.h"
 
 using namespace std;
 
 class Board
 {
-protected:
+private:
     int numTiles;
     int numSnakes;
     int numLadders;
 
 public:
     Board(int tiles, int snakes, int ladders);
-    ~Board();
+    Board();
 };
 
 Board::Board(int numTiles, int numSnakes, int numLadders)
@@ -48,7 +49,7 @@ Board::Board(int numTiles, int numSnakes, int numLadders)
             {
                 continue;
             }
-            cout << randomS << endl;
+            //cout << randomS << endl;
             tiles[randomS] = 'S';
             counterS++;
         }
@@ -61,18 +62,21 @@ Board::Board(int numTiles, int numSnakes, int numLadders)
             {
                 continue;
             }
-            cout << "Ladders" << endl;
-            cout << randomL << endl;
+            // cout << "Ladders" << endl;
+            // cout << randomL << endl;
             tiles[randomL] = 'L';
             counterL++;
         }
 
-        cout << tiles[i];
+        //cout << tiles[i];
     }
 }
 
-Board::~Board()
+Board::Board()
 {
+    this->numTiles = 30;
+    this->numSnakes = 3;
+    this->numLadders = 3;
 }
 
 #endif

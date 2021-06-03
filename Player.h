@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "Tiles.h"
+
 using namespace std;
 
 class Player
@@ -14,6 +16,7 @@ public:
     int rollDice();
 
     int getPos(int);
+
     int snake(int);
     int ladder(int);
 };
