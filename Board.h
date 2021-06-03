@@ -30,27 +30,44 @@ Board::Board(int numTiles, int numSnakes, int numLadders)
     // Create the empty board
     char tiles[numTiles];
 
-    // Create random numbers and save them in an array
-    int snakeList[numSnakes];
-    for (int s = 0; s < numSnakes; s++)
+    int counterS = 0;
+    int counterL = 0;
+    srand(time(NULL));
+    for (int i = 0; i < numTiles; i++)
     {
-        srand(time(NULL));
-        snakeList[s] = 1 + rand() % (numSnakes - 1);
+        tiles[i] = 'N';
     }
 
     for (int i = 1; i <= numTiles; i++)
     {
-        for (int index = 0; index < numTiles; index++)
+        // Create the snakes tiles
+        while (counterS < numSnakes)
         {
-            if (i == snakeList[index])
+            int randomS = 1 + rand() % (numTiles);
+            if (tiles[randomS] == 'S')
             {
-                tiles[i] = 'S';
+                continue;
             }
-            else
-            {
-                tiles[i] = 'N';
-            }
+            cout << randomS << endl;
+            tiles[randomS] = 'S';
+            counterS++;
         }
+
+        // Create the ladder tiles
+        while (counterL < numLadders)
+        {
+            int randomL = 1 + rand() % (numTiles);
+            if (tiles[randomL] == 'L' || tiles[randomL] == 'S')
+            {
+                continue;
+            }
+            cout << "Ladders" << endl;
+            cout << randomL << endl;
+            tiles[randomL] = 'L';
+            counterL++;
+        }
+
+        cout << tiles[i];
     }
 }
 
