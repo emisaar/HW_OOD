@@ -46,6 +46,10 @@ Board::Board(int numTiles, int numSnakes, int numLadders)
             {
                 tiles[i] = 'S';
             }
+            else
+            {
+                tiles[i] = 'N';
+            }
         }
     }
 }

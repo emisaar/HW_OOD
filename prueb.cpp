@@ -34,8 +34,11 @@ int main()
             {
                 tiles[i] = 'S';
             }
+            else
+            {
+                tiles[i] = 'N';
+            }
         }
+        cout << tiles[i];
     }
-
-    cout << tiles;
 }
