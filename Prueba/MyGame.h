@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <stdbool.h>
-#include "Player.h"
+//#include "Player.h"
 #include "Board.h"
-#include "Tiles.h"
+#include "Tile.h"
 
 using namespace std;
 
@@ -41,21 +41,24 @@ void MyGame::start()
     if (gameMode == 0)
     {
         Board b1();
-        turns = 15;
     }
     else
     {
-        int numT, numS, numL;
+        int tileN, snakesN, laddersN, penalty, reward, turnsN;
         cout << "Enter the number of tiles: ";
-        cin >> numT;
+        cin >> tileN;
         cout << "Enter the number of snakes: ";
-        cin >> numS;
+        cin >> snakesN;
         cout << "Enter the number of ladders: ";
-        cin >> numL;
+        cin >> laddersN;
+        cout << "Enter the penalty value: ";
+        cin >> penalty;
+        cout << "Enter the reward value: ";
+        cin >> reward;
         cout << "Enter the number of turns: ";
-        cin >> turns;
+        cin >> turnsN;
 
-        Board b1(numT, numS, numL);
+        Board b1(tileN, snakesN, laddersN, penalty, reward, turnsN);
     }
 
     while (turn <= turns) // Maximum number of shifts is 15
