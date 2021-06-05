@@ -29,13 +29,13 @@ public:
     void setTiles(int);
     void setSnakes(int);
     void setLadders(int);
-    void setTurns(int);
+    void setMaxTurns(int);
 
     void setReward(int);
     void setPenalty(int);
 
     int getTiles();
-    int getTurns();
+    int getMaxTurns();
 
     void configure();
     void createBoard();
@@ -70,7 +70,7 @@ void Board::setLadders(int _numLadders)
     this->numLadders = _numLadders;
 }
 
-void Board::setTurns(int _numTurns)
+void Board::setMaxTurns(int _numTurns)
 {
     this->numTurns = _numTurns;
 }
@@ -90,7 +90,7 @@ int Board::getTiles()
     return this->numTiles;
 }
 
-int Board::getTurns()
+int Board::getMaxTurns()
 {
     return this->numTurns;
 }
@@ -116,7 +116,7 @@ void Board::configure()
     setLadders(numLadders);
     cout << "Turns: " << endl;
     cin >> numTurns;
-    setTurns(numTurns);
+    setMaxTurns(numTurns);
     cout << "Enter the penalty: " << endl;
     cin >> penalty;
     setPenalty(penalty);

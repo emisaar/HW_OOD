@@ -112,6 +112,36 @@ void MyGame::start()
     cin >> option;
 
     /* LOGICA DEL JUEGO */
+    char userIn;
+    int counterPlayers = 0;
+
+    while (getTurn() < b1.getMaxTurns())
+    {
+        if (option == 1)
+        {
+            cout << "Press C to continue next turn or E to end the game: ";
+            cin >> userIn;
+
+            while ((userIn != 'C') && (userIn != 'E'))
+            {
+                // Check if the option is valid
+                cout << "Invalid operation. Please press C to continue next turn or E to end the game: ";
+                cin >> userIn;
+            }
+        }
+        else if (option == 2)
+        {
+            userIn = 'C';
+        }
+
+        if (userIn == 'C')
+        {
+            // Set positions for the players
+            int actualPos = players[counterPlayers]->getPosition();
+            int valueDice = players[counterPlayers]->rollDice();
+            int newPos = actualPos + valueDice;
+        }
+    }
 }
 
 #endif
