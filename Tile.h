@@ -12,7 +12,7 @@ private:
     int movement;
 
 public:
-    Tile(/* args */);
+    Tile();
     ~Tile();
 
     virtual char getType() = 0;
@@ -20,7 +20,7 @@ public:
     virtual int move(int) = 0;
 };
 
-Tile::Tile(/* args */)
+Tile::Tile()
 {
     this->type = '-';
     this->movement = 0;

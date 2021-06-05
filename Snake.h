@@ -14,7 +14,7 @@ private:
     int movement;
 
 public:
-    Snake(/* args */);
+    Snake();
     ~Snake();
 
     virtual char getType();
@@ -22,7 +22,7 @@ public:
     virtual int move(int);
 };
 
-Snake::Snake(/* args */)
+Snake::Snake()
 {
     this->type = 'S';
     this->movement = 3;

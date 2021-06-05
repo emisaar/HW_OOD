@@ -23,7 +23,7 @@ private:
     int penalty;
 
 public:
-    Board(/* args */);
+    Board();
     ~Board();
 
     void setTiles(int);
@@ -41,7 +41,7 @@ public:
     void createBoard();
 };
 
-Board::Board(/* args */)
+Board::Board()
 {
     this->numTiles = 30;
     this->numSnakes = 3;
@@ -184,7 +184,7 @@ void Board::createBoard()
         }
     }
 
-    // //print the board with the settings
+    //print the board with the settings
     // for (int i = 0; i < numTiles; i++)
     // {
     //     cout << tiles[i] << " ";

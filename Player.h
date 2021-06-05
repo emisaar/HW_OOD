@@ -1,8 +1,9 @@
-#ifndef CLASS_H
-#define CLASS_H
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #include <iostream>
-#include <ctime>
+#include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 
@@ -57,8 +58,15 @@ void Player::setPosition(int _position)
 
 int Player::rollDice()
 {
-    int value = (rand() % 6) + 1;
-    return value;
+    int num = 6;
+    srand(time(NULL));
+    int moves = rand() % num;
+    if (moves == 0)
+    {
+        moves = 1;
+    }
+
+    return moves;
 }
 
 #endif

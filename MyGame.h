@@ -102,7 +102,7 @@ void MyGame::start()
 
     for (int i = 1; i <= numPlayers; i++)
     {
-        players[i] = new Player(i, 1);
+        players[i - 1] = new Player(i, 1);
     }
 
     cout << "\nGame mode menu." << endl;
