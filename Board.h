@@ -23,6 +23,7 @@ private:
     int penalty;
 
 public:
+    Tile *board1[500];
     Board();
     ~Board();
 
@@ -128,7 +129,6 @@ void Board::configure()
 void Board::createBoard()
 {
     char tiles[numTiles];
-    Tile *board1[numTiles];
 
     int counterS = 0;
     int counterL = 0;

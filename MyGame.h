@@ -22,7 +22,7 @@ private:
     void setTurn(int);
     void setNumPlayers(int);
 
-    int increaseTurn();
+    //int increaseTurn();
     void createPlayers();
     void gameMode();
 
@@ -58,11 +58,11 @@ void MyGame::setNumPlayers(int _players)
     this->numPlayers = _players;
 }
 
-int MyGame::increaseTurn()
-{
-    int turn = getTurn() + 1;
-    return turn;
-}
+// int MyGame::increaseTurn()
+// {
+//     int turn = getTurn() + 1;
+//     return turn;
+// }
 
 void MyGame::createPlayers()
 {
@@ -114,6 +114,8 @@ void MyGame::start()
     /* LOGICA DEL JUEGO */
     char userIn;
     int counterPlayers = 0;
+    int counterTurns = 0;
+    int newPos_ = 0;
 
     while (getTurn() < b1.getMaxTurns())
     {
@@ -140,6 +142,62 @@ void MyGame::start()
             int actualPos = players[counterPlayers]->getPosition();
             int valueDice = players[counterPlayers]->rollDice();
             int newPos = actualPos + valueDice;
+
+            // The position is set to 30 when it is more than 30
+            if (newPos >= b1.getTiles())
+            {
+                newPos = b1.getTiles();
+            }
+
+            // The position is set to 1 when it is less than 0
+            if (newPos < 0)
+            {
+                newPos = 1;
+            }
+
+            if (b1.board1[newPos - 1]->getType() == 'N' || b1.board1[newPos - 1]->getType() == 'S' || b1.board1[newPos - 1]->getType() == 'L')
+            {
+
+                cout << getTurn() << " " << counterPlayers + 1 << " " << newPos << " "
+                     << valueDice << " " << b1.board1[newPos - 1]->getType() << " "
+                     << b1.board1[newPos - 1]->move(newPos) << endl;
+
+                newPos_ = b1.board1[newPos - 1]->move(newPos);
+                players[counterPlayers]->setPosition(newPos);
+                counterTurns += 1;
+
+                if (counterTurns == numPlayers)
+                {
+                    setTurn(getTurn() + 1);
+                }
+            }
+
+            if (players[counterPlayers]->getPosition() == b1.getTiles())
+            {
+                cout << "-- GAME OVER --" << endl;
+                cout << "Player " << counterPlayers + 1 << " is the winner!!!" << endl;
+                break;
+            }
+
+            if (counterPlayers == numPlayers)
+            {
+                counterPlayers = 1;
+            }
+            else
+            {
+                counterPlayers += 1;
+            }
+        }
+        else
+        {
+            // If the user enters 'E' the game stop
+            cout << "Thanks for playing!!!" << endl;
+            break;
+        }
+
+        if (getTurn() >= b1.getMaxTurns())
+        {
+            cout << "The maximum number of turns has been reached..." << endl;
         }
     }
 }
