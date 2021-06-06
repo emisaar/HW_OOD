@@ -172,6 +172,13 @@ void MyGame::start()
                 counterTurns += 1;
             }
 
+            counterPlayers += 1;
+
+            if (counterPlayers == numPlayers)
+            {
+                counterPlayers = 1;
+            }
+
             if (counterTurns == numPlayers)
             {
                 setTurn(increaseTurn());
@@ -188,15 +195,6 @@ void MyGame::start()
                 cout << "-- GAME OVER --" << endl;
                 cout << "Player " << counterPlayers + 1 << " is the winner!!!" << endl;
                 break;
-            }
-
-            if (counterPlayers == numPlayers)
-            {
-                counterPlayers = 1;
-            }
-            else
-            {
-                counterPlayers += 1;
             }
         }
         else

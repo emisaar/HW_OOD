@@ -1,0 +1,1 @@
+counterPlayers += 1;
