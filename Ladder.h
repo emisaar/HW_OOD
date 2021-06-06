@@ -14,15 +14,15 @@ private:
     int movement;
 
 public:
-    Ladder(/* args */);
+    Ladder();
     ~Ladder();
 
-    virtual char getType();
-    virtual void setMovement(int);
-    virtual int move(int);
+    char getType();
+    void setMovement(int);
+    int move(int);
 };
 
-Ladder::Ladder(/* args */)
+Ladder::Ladder()
 {
     this->type = 'L';
     this->movement = 3;

@@ -14,18 +14,18 @@ private:
     int movement;
 
 public:
-    Normal(/* args */);
+    Normal();
     ~Normal();
 
-    virtual char getType();
-    virtual void setMovement(int);
-    virtual int move(int);
+    char getType();
+    void setMovement(int);
+    int move(int);
 };
 
-Normal::Normal(/* args */)
+Normal::Normal()
 {
     this->type = 'N';
-    this->movement = 0;
+    this->movement = 1;
 }
 
 Normal::~Normal()

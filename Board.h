@@ -23,7 +23,7 @@ private:
     int penalty;
 
 public:
-    Tile *board1[500];
+    Tile *board1[50];
     Board();
     ~Board();
 

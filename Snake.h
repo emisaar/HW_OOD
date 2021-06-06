@@ -17,9 +17,9 @@ public:
     Snake();
     ~Snake();
 
-    virtual char getType();
-    virtual void setMovement(int);
-    virtual int move(int);
+    char getType();
+    void setMovement(int);
+    int move(int);
 };
 
 Snake::Snake()

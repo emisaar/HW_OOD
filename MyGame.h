@@ -132,7 +132,10 @@ void MyGame::start()
         }
         else if (gameMenu == 2)
         {
-            userIn = 'C';
+            if (getTurn() < b1.getMaxTurns())
+            {
+                userIn = 'C';
+            }
         }
 
         if (userIn == 'C')
@@ -141,6 +144,7 @@ void MyGame::start()
             int actualPos = players[counterPlayers]->getPosition();
             int valueDice = players[counterPlayers]->rollDice();
             int newPos = actualPos + valueDice;
+            cout << "New pose BEFORE: " << newPos << endl;
 
             // The position is set to 30 when it is more than 30
             if (newPos >= b1.getTiles())
@@ -160,6 +164,8 @@ void MyGame::start()
                 cout << getTurn() << " " << counterPlayers + 1 << " " << newPos << " "
                      << valueDice << " " << b1.board1[newPos - 1]->getType() << " "
                      << b1.board1[newPos - 1]->move(newPos) << endl;
+
+                cout << "New pose AFTER: " << newPos << endl;
 
                 //newPos_ = b1.board1[newPos - 1]->move(newPos);
                 players[counterPlayers]->setPosition(b1.board1[newPos - 1]->move(newPos));
