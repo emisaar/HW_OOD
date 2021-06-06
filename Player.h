@@ -2,8 +2,7 @@
 #define PLAYER_H
 
 #include <iostream>
-#include <stdlib.h>
-#include <time.h>
+#include <ctime>
 
 using namespace std;
 
@@ -58,15 +57,8 @@ void Player::setPosition(int _position)
 
 int Player::rollDice()
 {
-    int num = 6;
-    srand(time(NULL));
-    int moves = rand() % num;
-    if (moves == 0)
-    {
-        moves = 1;
-    }
-
-    return moves;
+    int valor = (rand() % 6) + 1; 
+    return valor;
 }
 
 #endif

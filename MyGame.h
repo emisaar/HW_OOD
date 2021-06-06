@@ -15,14 +15,17 @@ class MyGame
 private:
     int numPlayers;
     int actualTurn;
+    int option;
+    int gameMenu;
     Board b1;
+    Player *players[10];
 
     int getTurn();
 
     void setTurn(int);
     void setNumPlayers(int);
 
-    //int increaseTurn();
+    int increaseTurn();
     void createPlayers();
     void gameMode();
 
@@ -58,11 +61,11 @@ void MyGame::setNumPlayers(int _players)
     this->numPlayers = _players;
 }
 
-// int MyGame::increaseTurn()
-// {
-//     int turn = getTurn() + 1;
-//     return turn;
-// }
+int MyGame::increaseTurn()
+{
+    int turn = getTurn() + 1;
+    return turn;
+}
 
 void MyGame::createPlayers()
 {
@@ -74,7 +77,6 @@ void MyGame::createPlayers()
 
 void MyGame::gameMode()
 {
-    int option;
     cout << "\nMenu" << endl;
     cout << "1. Default game." << endl;
     cout << "2. Custom game." << endl;
@@ -95,9 +97,6 @@ void MyGame::gameMode()
 
 void MyGame::start()
 {
-    Player *players[numPlayers];
-    int option;
-
     gameMode();
 
     for (int i = 1; i <= numPlayers; i++)
@@ -108,8 +107,8 @@ void MyGame::start()
     cout << "\nGame mode menu." << endl;
     cout << "1. Manual mode." << endl;
     cout << "2. Auto mode." << endl;
-    cout << "Enter an option: ";
-    cin >> option;
+    cout << "Enter an gameMenu: ";
+    cin >> gameMenu;
 
     /* LOGICA DEL JUEGO */
     char userIn;
@@ -119,19 +118,19 @@ void MyGame::start()
 
     while (getTurn() < b1.getMaxTurns())
     {
-        if (option == 1)
+        if (gameMenu == 1)
         {
             cout << "Press C to continue next turn or E to end the game: ";
             cin >> userIn;
 
             while ((userIn != 'C') && (userIn != 'E'))
             {
-                // Check if the option is valid
+                // Check if the gameMenu is valid
                 cout << "Invalid operation. Please press C to continue next turn or E to end the game: ";
                 cin >> userIn;
             }
         }
-        else if (option == 2)
+        else if (gameMenu == 2)
         {
             userIn = 'C';
         }
@@ -168,7 +167,7 @@ void MyGame::start()
 
                 if (counterTurns == numPlayers)
                 {
-                    setTurn(getTurn() + 1);
+                    setTurn(increaseTurn());
                 }
             }
 
