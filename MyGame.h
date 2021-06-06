@@ -176,6 +176,7 @@ void MyGame::start()
             if (counterTurns == numPlayers)
             {
                 setTurn(increaseTurn());
+                counterTurns = 0;
             }
 
             if (getTurn() >= b1.getMaxTurns())
