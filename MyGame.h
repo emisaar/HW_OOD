@@ -159,9 +159,8 @@ void MyGame::start()
 
             if (b1.board1[newPos - 1]->getType() == 'N' || b1.board1[newPos - 1]->getType() == 'S' || b1.board1[newPos - 1]->getType() == 'L')
             {
-                cout << getTurn() << " " << counterPlayers + 1 << " " << newPos << " "
-                     << valueDice << " " << b1.board1[newPos - 1]->getType() << " "
-                     << b1.board1[newPos - 1]->move(newPos) << endl;
+                cout << getTurn() << " " << counterPlayers + 1 << " " << valueDice << " "
+                     << b1.board1[newPos - 1]->move(newPos) << " " << b1.board1[newPos - 1]->getType() << " "  << endl;
 
                 //newPos_ = b1.board1[newPos - 1]->move(newPos);
                 players[counterPlayers]->setPosition(b1.board1[newPos - 1]->move(newPos));
