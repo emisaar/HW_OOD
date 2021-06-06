@@ -57,7 +57,7 @@ void Player::setPosition(int _position)
 
 int Player::rollDice()
 {
-    int valor = (rand() % 6) + 1; 
+    int valor = (rand() % 6) + 1;
     return valor;
 }
 

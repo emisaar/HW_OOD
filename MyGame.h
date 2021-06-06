@@ -111,12 +111,12 @@ void MyGame::start()
     cin >> gameMenu;
 
     /* LOGICA DEL JUEGO */
-    char userIn;
+    char userIn = '-';
     int counterPlayers = 0;
     int counterTurns = 0;
     int newPos_ = 0;
 
-    while (getTurn() < b1.getMaxTurns())
+    while (userIn != 'E')
     {
         if (gameMenu == 1)
         {
@@ -149,7 +149,7 @@ void MyGame::start()
             }
 
             // The position is set to 1 when it is less than 0
-            if (newPos < 0)
+            if (newPos <= 0)
             {
                 newPos = 1;
             }
@@ -164,14 +164,19 @@ void MyGame::start()
                 //newPos_ = b1.board1[newPos - 1]->move(newPos);
                 players[counterPlayers]->setPosition(b1.board1[newPos - 1]->move(newPos));
                 counterTurns += 1;
-
             }
 
             if (counterTurns == numPlayers)
             {
                 setTurn(increaseTurn());
             }
-            
+
+            if (getTurn() >= b1.getMaxTurns())
+            {
+                cout << "The maximum number of turns has been reached..." << endl;
+                break;
+            }
+
             if (players[counterPlayers]->getPosition() == b1.getTiles())
             {
                 cout << "-- GAME OVER --" << endl;
@@ -193,11 +198,6 @@ void MyGame::start()
             // If the user enters 'E' the game stop
             cout << "Thanks for playing!!!" << endl;
             break;
-        }
-
-        if (getTurn() >= b1.getMaxTurns())
-        {
-            cout << "The maximum number of turns has been reached..." << endl;
         }
     }
 }
