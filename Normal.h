@@ -18,6 +18,7 @@ public:
     ~Normal();
 
     char getType();
+    int getMovement();
     void setMovement(int);
     int move(int);
 };
@@ -35,6 +36,11 @@ Normal::~Normal()
 char Normal::getType()
 {
     return this->type;
+}
+
+int Normal::getMovement()
+{
+    return this->movement;
 }
 
 void Normal::setMovement(int _movement)

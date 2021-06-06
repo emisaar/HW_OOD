@@ -18,6 +18,7 @@ public:
     ~Snake();
 
     char getType();
+    int getMovement();
     void setMovement(int);
     int move(int);
 };
@@ -35,6 +36,11 @@ Snake::~Snake()
 char Snake::getType()
 {
     return this->type;
+}
+
+int Snake::getMovement()
+{
+    return this->movement;
 }
 
 void Snake::setMovement(int _movement)

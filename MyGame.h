@@ -77,7 +77,10 @@ void MyGame::createPlayers()
 
 void MyGame::gameMode()
 {
-    cout << "\nMenu" << endl;
+    cout << "Welcome to Snakes & Ladders Game" << endl;
+    cout << "Authors:\n- Sofía Margarita Hernández Muñoz A01655084 \nEmiliano Saucedo Arriola A01659258" << endl;
+
+    cout << "...Menu..." << endl;
     cout << "1. Default game." << endl;
     cout << "2. Custom game." << endl;
     cout << "Enter an option: ";
@@ -107,14 +110,19 @@ void MyGame::start()
     cout << "\nGame mode menu." << endl;
     cout << "1. Manual mode." << endl;
     cout << "2. Auto mode." << endl;
-    cout << "Enter an gameMenu: ";
+    cout << "Enter an option: ";
     cin >> gameMenu;
+    while ((gameMenu != 1) && (gameMenu != 2))
+            {
+                // Check if the gameMenu is valid
+                cout << "Invalid operation. Please press 1 or 2: ";
+                cin >> gameMenu;
+            }
 
     /* LOGICA DEL JUEGO */
     char userIn = '-';
     int counterPlayers = 0;
     int counterTurns = 0;
-    int newPos_ = 0;
 
     while (userIn != 'E')
     {
@@ -160,7 +168,8 @@ void MyGame::start()
             if (b1.board1[newPos - 1]->getType() == 'N' || b1.board1[newPos - 1]->getType() == 'S' || b1.board1[newPos - 1]->getType() == 'L')
             {
                 cout << getTurn() << " " << counterPlayers + 1 << " " << valueDice << " "
-                     << b1.board1[newPos - 1]->move(newPos) << " " << b1.board1[newPos - 1]->getType() << " "  << endl;
+                     << newPos << " " << b1.board1[newPos - 1]->getType() << " " 
+                     << b1.board1[newPos - 1]->getMovement() << endl;
 
                 //newPos_ = b1.board1[newPos - 1]->move(newPos);
                 players[counterPlayers]->setPosition(b1.board1[newPos - 1]->move(newPos));

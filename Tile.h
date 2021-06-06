@@ -16,6 +16,7 @@ public:
     ~Tile();
 
     virtual char getType() = 0;
+    virtual int getMovement() = 0;
     virtual void setMovement(int) = 0;
     virtual int move(int) = 0;
 };

@@ -18,6 +18,7 @@ public:
     ~Ladder();
 
     char getType();
+    int getMovement();
     void setMovement(int);
     int move(int);
 };
@@ -35,6 +36,12 @@ Ladder::~Ladder()
 char Ladder::getType()
 {
     return this->type;
+}
+
+
+int Ladder::getMovement()
+{
+    return this->movement;
 }
 
 void Ladder::setMovement(int _movement)
