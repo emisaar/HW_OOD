@@ -161,16 +161,17 @@ void MyGame::start()
                      << valueDice << " " << b1.board1[newPos - 1]->getType() << " "
                      << b1.board1[newPos - 1]->move(newPos) << endl;
 
-                newPos_ = b1.board1[newPos - 1]->move(newPos);
-                players[counterPlayers]->setPosition(newPos);
+                //newPos_ = b1.board1[newPos - 1]->move(newPos);
+                players[counterPlayers]->setPosition(b1.board1[newPos - 1]->move(newPos));
                 counterTurns += 1;
 
-                if (counterTurns == numPlayers)
-                {
-                    setTurn(increaseTurn());
-                }
             }
 
+            if (counterTurns == numPlayers)
+            {
+                setTurn(increaseTurn());
+            }
+            
             if (players[counterPlayers]->getPosition() == b1.getTiles())
             {
                 cout << "-- GAME OVER --" << endl;
