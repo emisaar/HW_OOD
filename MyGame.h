@@ -7,6 +7,7 @@
 
 #include "Board.h"
 #include "Player.h"
+#include "Turn.h"
 
 using namespace std;
 
@@ -14,18 +15,18 @@ class MyGame
 {
 private:
     int numPlayers;
-    int actualTurn;
+    // int actualTurn;
     int option;
     int gameMenu;
     Board b1;
     Player *players[10];
 
-    int getTurn();
+    // int getTurn();
 
-    void setTurn(int);
+    // void setTurn(int);
     void setNumPlayers(int);
 
-    int increaseTurn();
+    // int increaseTurn();
     void createPlayers();
     void gameMode();
 
@@ -39,33 +40,33 @@ public:
 MyGame::MyGame()
 {
     this->numPlayers = 2;
-    this->actualTurn = 1;
+    // this->actualTurn = 1;
 }
 
 MyGame::~MyGame()
 {
 }
 
-int MyGame::getTurn()
-{
-    return this->actualTurn;
-}
+// int MyGame::getTurn()
+// {
+//     return this->actualTurn;
+// }
 
-void MyGame::setTurn(int _turn)
-{
-    this->actualTurn = _turn;
-}
+// void MyGame::setTurn(int _turn)
+// {
+//     this->actualTurn = _turn;
+// }
 
 void MyGame::setNumPlayers(int _players)
 {
     this->numPlayers = _players;
 }
 
-int MyGame::increaseTurn()
-{
-    int turn = getTurn() + 1;
-    return turn;
-}
+// int MyGame::increaseTurn()
+// {
+//     int turn = getTurn() + 1;
+//     return turn;
+// }
 
 void MyGame::createPlayers()
 {
@@ -123,6 +124,7 @@ void MyGame::start()
     char userIn = '-';
     int counterPlayers = 0;
     int counterTurns = 0;
+    Turn t1 = Turn();
 
     while (userIn != 'E')
     {
@@ -140,7 +142,7 @@ void MyGame::start()
         }
         else if (gameMenu == 2)
         {
-            if (getTurn() < b1.getMaxTurns())
+            if (t1.getTurn() < b1.getMaxTurns())
             {
                 userIn = 'C';
             }
@@ -167,7 +169,7 @@ void MyGame::start()
 
             if (b1.board1[newPos - 1]->getType() == 'N')
             {
-                cout << getTurn() << " " << counterPlayers + 1 << " " << valueDice << " "
+                cout << t1 << " " << counterPlayers + 1 << " " << valueDice << " "
                      << newPos << " " << b1.board1[newPos - 1]->getType() << " "
                      << b1.board1[newPos - 1]->getMovement() << endl;
 
@@ -183,7 +185,7 @@ void MyGame::start()
                 s1.setPositionSC(newPos);
                 s1 = s1 + s1;
 
-                cout << getTurn() << " " << counterPlayers + 1 << " " << valueDice << " "
+                cout << t1 << " " << counterPlayers + 1 << " " << valueDice << " "
                      << newPos << " " << b1.board1[newPos - 1]->getType() << " "
                      << s1.getPositionSC() << endl;
 
@@ -198,7 +200,7 @@ void MyGame::start()
                 l1.setPositionSC(newPos);
                 l1 = l1 + l1;
 
-                cout << getTurn() << " " << counterPlayers + 1 << " " << valueDice << " "
+                cout << t1 << " " << counterPlayers + 1 << " " << valueDice << " "
                      << newPos << " " << b1.board1[newPos - 1]->getType() << " "
                      << l1.getPositionSC() << endl;
 
@@ -214,11 +216,11 @@ void MyGame::start()
 
             if (counterTurns == numPlayers)
             {
-                setTurn(increaseTurn());
+                t1.setTurn(t1.increaseTurn());
                 counterTurns = 0;
             }
 
-            if (getTurn() >= b1.getMaxTurns())
+            if (t1.getTurn() >= b1.getMaxTurns())
             {
                 cout << "The maximum number of turns has been reached..." << endl;
                 break;
