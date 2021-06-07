@@ -12,8 +12,19 @@ class Ladder : public Tile
 private:
     char type;
     int movement;
+    int position;
 
 public:
+    void setPositionSC(int);
+    int getPositionSC();
+
+    Ladder operator+(Ladder const &_ladder)
+    {
+        Ladder nPos;
+        nPos.position = this->position + _ladder.movement;
+        return nPos;
+    }
+
     Ladder();
     ~Ladder();
 
@@ -52,6 +63,16 @@ int Ladder::move(int _position)
 {
     int newPos = _position + movement;
     return newPos;
+}
+
+void Ladder::setPositionSC(int _pos)
+{
+    this->position = _pos;
+}
+
+int Ladder::getPositionSC()
+{
+    return position;
 }
 
 #endif

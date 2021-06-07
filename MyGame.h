@@ -165,7 +165,7 @@ void MyGame::start()
                 newPos = 1;
             }
 
-            if (b1.board1[newPos - 1]->getType() == 'N' || b1.board1[newPos - 1]->getType() == 'S' || b1.board1[newPos - 1]->getType() == 'L')
+            if (b1.board1[newPos - 1]->getType() == 'N')
             {
                 cout << getTurn() << " " << counterPlayers + 1 << " " << valueDice << " "
                      << newPos << " " << b1.board1[newPos - 1]->getType() << " "
@@ -176,6 +176,37 @@ void MyGame::start()
                 counterTurns += 1;
                 counterPlayers += 1;
             }
+            else if (b1.board1[newPos - 1]->getType() == 'S')
+            {
+                Snake s1;
+                s1.setMovement(b1.penalty);
+                s1.setPositionSC(newPos);
+                s1 = s1 + s1;
+
+                cout << getTurn() << " " << counterPlayers + 1 << " " << valueDice << " "
+                     << newPos << " " << b1.board1[newPos - 1]->getType() << " "
+                     << s1.getPositionSC() << endl;
+
+                players[counterPlayers]->setPosition(b1.board1[newPos - 1]->move(newPos));
+                counterTurns += 1;
+                counterPlayers += 1;
+            }
+            else if (b1.board1[newPos - 1]->getType() == 'L')
+            {
+                Ladder l1;
+                l1.setMovement(b1.reward);
+                l1.setPositionSC(newPos);
+                l1 = l1 + l1;
+
+                cout << getTurn() << " " << counterPlayers + 1 << " " << valueDice << " "
+                     << newPos << " " << b1.board1[newPos - 1]->getType() << " "
+                     << l1.getPositionSC() << endl;
+
+                players[counterPlayers]->setPosition(b1.board1[newPos - 1]->move(newPos));
+                counterTurns += 1;
+                counterPlayers += 1;
+            }
+
             if (counterPlayers == numPlayers)
             {
                 counterPlayers = 0;

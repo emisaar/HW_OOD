@@ -19,10 +19,10 @@ private:
     int numSnakes;
     int numLadders;
     int numTurns;
-    int reward;
-    int penalty;
 
 public:
+    int reward;
+    int penalty;
     Tile *board1[50];
     Board();
     ~Board();
