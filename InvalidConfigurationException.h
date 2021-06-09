@@ -6,12 +6,11 @@ using namespace std;
 
 class InvalidConfigurationException:public exception{
     protected:
-        int motive, val;
+        int motive;
     public:
         InvalidConfigurationException(): motive(0) {};
-        InvalidConfigurationException(int m, int v) : motive(m), val(v) {};
+        InvalidConfigurationException(int m) : motive(m) {};
         virtual const char* what() const throw(){
-            // string str1, str2, str3;
             switch (motive)
             {
             case 1:

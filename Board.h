@@ -21,6 +21,8 @@ private:
     int numLadders;
     int numTurns;
 
+    int temp;
+
 public:
     int reward;
     int penalty;
@@ -113,7 +115,8 @@ void Board::configure()
     cin >> numTiles;
     if (numTiles <= 1)
     {
-        throw InvalidConfigurationException(1,numTiles);
+        temp = numTiles;
+        throw InvalidConfigurationException(1);
     }
 
     setTiles(numTiles);
@@ -122,7 +125,8 @@ void Board::configure()
     cin >> numSnakes;
     if(numSnakes < 0)
     {
-        throw InvalidConfigurationException(2,numSnakes);
+        temp = numSnakes;
+        throw InvalidConfigurationException(2);
     }
 
     setSnakes(numSnakes);
@@ -131,7 +135,8 @@ void Board::configure()
     cin >> numLadders;
     if(numLadders < 0)
     {
-        throw InvalidConfigurationException(3,numLadders);
+        temp = numLadders;
+        throw InvalidConfigurationException(3);
     }
 
     setLadders(numLadders);
@@ -140,7 +145,8 @@ void Board::configure()
     cin >> numTurns;
     if(numTurns < 1)
     {
-        throw InvalidConfigurationException(4,numTurns);
+        temp = numTurns;
+        throw InvalidConfigurationException(4);
     }
 
     setMaxTurns(numTurns);
@@ -149,7 +155,8 @@ void Board::configure()
     cin >> penalty;
     if (penalty < 1)
     {
-        throw InvalidConfigurationException(5,penalty);
+        temp = penalty;
+        throw InvalidConfigurationException(5);
     }
 
     setPenalty(penalty);
@@ -158,14 +165,15 @@ void Board::configure()
     cin >> reward;
     if (reward < 1)
     {
-        throw InvalidConfigurationException(6,reward);
+        temp = reward;
+        throw InvalidConfigurationException(6);
     }
 
     setReward(reward);
 
     }catch(const exception& msj)
     {
-        cout << msj.what() <<endl;
+        cout << msj.what() << " " << temp << endl;
         cout << -1 << endl;
         exit(-1);
     }
