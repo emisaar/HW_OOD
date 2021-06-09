@@ -4,26 +4,23 @@
 Instrucciones
 El programa es una simulación de un juego de serpientes y escaleras, donde el usuario tiene la posibilidad de configurar los 
 parámetros del juego o jugar con la configuración por defecto. Los parámetros que se pueden modificar son: 
-Número de casillas [Valor por defecto: 30]
+Número de casillas [Valor por defecto: 30, Valor máximo: 30]
 Número de serpientes [Valor por defecto: 3]
 Número de escaleras [Valor por defecto: 3]
 Número de turnos [Valor por defecto: 15]
 Valor de castigo para las casillas especiales (Serpientes) [Valor por defecto: 3]
 Valor de recompensa para las casillas especiales (Escaleras) [Valor por defecto: 3]
+Número de jugadores [Valor por defecto: 2, valor máximo: 10]
 
 De igual forma se le otorga la libertad al jugador para que el juego pueda ejecutarse de forma manual (que el jugador sea 
 capaz de lanzar cada tirada), así como de manera automática.
 
 
-Sobrecarga de operadores
-Para poder generar una sobrecarga de operadores primero tuvimos que crear un atributo position que guarde la position modificada 
-en cada tipo de Tile y no en Board como se hacía en la tarea de Polimorfismo. Para obtener y modificar este atributo se crearon 
-los métodos setPositionSC() y getPositionSC(). Después, en las clases de cada casilla se define la sobrecarga de operadores que 
-regresa otra casilla del mismo tipo y tiene como parámetro la misma casilla, en este se modifica el atributo position dependiendo 
-del reward o penalty que se tenga.
-Para sobrecargar el operador << tuvimos que crear una clase Turn la cual guarda toda la información que la clase Board generaba, 
-lo que hicimos fue mover todos los atributos y métodos que involucraban turn a esta nueva clase. Dentro de esta ahora sí podemos 
-generar la sobrecarga, esta se hace mediante la palabra reservada friend y ostream, la cual recibe como parámetro un ostream y un 
-Turn para que se imprima el turno actual.
-
-
+Manejo de excepciones
+En esta entrega se conservan las mecánicas implementadas con anterioridad, con la novedad de la creación de excepciones 
+"InvalidConfigurationException" que soluciona el error de inicialización del juego personalizado, donde si se introducen parámetros
+inválidos aparecerá en consola "Invalidad 'param_name value 'param_value", terminando el programa de forma inmediata e imprimiendo -1
+en consola.
+De igual forma, se implementó otra excepción, denominada "InvalidadOptionException" que permite finalizar el programa si el usuario
+introduce más de 5 veces un caracter distinto a "C" (para continuar) o "E" (para salir). Una vez excedido el número de intentos, se arroja en consola 
+"Invalid menu choice exceeded" y "--GAME OVER" previo a finalizar el programa.
