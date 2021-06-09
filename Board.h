@@ -165,7 +165,7 @@ void Board::configure()
 
     }catch(const exception& msj)
     {
-        cout << msj.what() << endl;
+        cout << msj.what() <<endl;
         cout << -1 << endl;
         exit(-1);
     }

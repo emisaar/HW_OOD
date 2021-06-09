@@ -8,6 +8,7 @@
 #include "Board.h"
 #include "Player.h"
 #include "Turn.h"
+#include "InvalidOptionException.h"
 
 using namespace std;
 
@@ -18,6 +19,7 @@ private:
     // int actualTurn;
     int option;
     int gameMenu;
+    int counterCheck = 1;
     Board b1;
     Player *players[10];
 
@@ -113,12 +115,14 @@ void MyGame::start()
     cout << "2. Auto mode." << endl;
     cout << "Enter an option: ";
     cin >> gameMenu;
+
     while ((gameMenu != 1) && (gameMenu != 2))
     {
         // Check if the gameMenu is valid
         cout << "Invalid operation. Please press 1 or 2: ";
         cin >> gameMenu;
     }
+
 
     /* LOGICA DEL JUEGO */
     char userIn = '-';
@@ -132,12 +136,25 @@ void MyGame::start()
         {
             cout << "Press C to continue next turn or E to end the game: ";
             cin >> userIn;
-
-            while ((userIn != 'C') && (userIn != 'E'))
+            try
             {
-                // Check if the gameMenu is valid
-                cout << "Invalid operation. Please press C to continue next turn or E to end the game: ";
-                cin >> userIn;
+                while ((userIn != 'C') && (userIn != 'E'))
+                {
+                    // Check if the gameMenu is valid
+                    cout << "Invalid operation. Please press C to continue next turn or E to end the game: ";
+                    cin >> userIn;
+
+                    counterCheck++;
+
+                    if (counterCheck == 5)
+                    {
+                        throw myException;
+                        break;
+                    }
+                }
+            }catch(const exception& msj){
+                cout << msj.what() << endl;
+                cout << "-- GAME OVER --" << endl;
             }
         }
         else if (gameMenu == 2)
