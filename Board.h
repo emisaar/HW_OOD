@@ -9,6 +9,7 @@
 #include "Snake.h"
 #include "Normal.h"
 #include "Ladder.h"
+#include "InvalidConfigurationException.h"
 
 using namespace std;
 
@@ -106,24 +107,68 @@ void Board::configure()
     int penalty;
 
     cout << "\nEnter the settings for the game." << endl;
+    try
+    {
     cout << "Tiles: " << endl;
     cin >> numTiles;
+    if (numTiles <= 1)
+    {
+        throw InvalidConfigurationException(1,numTiles);
+    }
+
     setTiles(numTiles);
+
     cout << "Snakes: " << endl;
     cin >> numSnakes;
+    if(numSnakes < 0)
+    {
+        throw InvalidConfigurationException(2,numSnakes);
+    }
+
     setSnakes(numSnakes);
+
     cout << "Ladders: " << endl;
     cin >> numLadders;
+    if(numLadders < 0)
+    {
+        throw InvalidConfigurationException(3,numLadders);
+    }
+
     setLadders(numLadders);
+
     cout << "Turns: " << endl;
     cin >> numTurns;
+    if(numTurns < 1)
+    {
+        throw InvalidConfigurationException(4,numTurns);
+    }
+
     setMaxTurns(numTurns);
+
     cout << "Enter the penalty: " << endl;
     cin >> penalty;
+    if (penalty < 1)
+    {
+        throw InvalidConfigurationException(5,penalty);
+    }
+
     setPenalty(penalty);
+    
     cout << "Enter the reward: " << endl;
     cin >> reward;
+    if (reward < 1)
+    {
+        throw InvalidConfigurationException(6,reward);
+    }
+
     setReward(reward);
+
+    }catch(const exception& msj)
+    {
+        cout << msj.what() << endl;
+        cout << -1 << endl;
+        exit(-1);
+    }
 }
 
 void Board::createBoard()
